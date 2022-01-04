@@ -1,5 +1,8 @@
 body {
   margin: 0;
+  color: #3b3939;
+  letter-spacing: .05rem;
+  font-size: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,7 +10,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a:hover {
+  color: #fdd294;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {font-family: "DidotLightItalic"; src: url("//db.onlinewebfonts.com/t/16efa2896f117dae2debeb23ab4715dd.eot"); src: url("//db.onlinewebfonts.com/t/16efa2896f117dae2debeb23ab4715dd.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/16efa2896f117dae2debeb23ab4715dd.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/16efa2896f117dae2debeb23ab4715dd.woff") format("woff"), url("//db.onlinewebfonts.com/t/16efa2896f117dae2debeb23ab4715dd.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/16efa2896f117dae2debeb23ab4715dd.svg#DidoteTextW01-Italic") format("svg"); }
+@font-face {font-family: "ProximaNovaLight"; src: url("//db.onlinewebfonts.com/t/4a76c979ab2dfddd7d464494946e4661.eot"); src: url("//db.onlinewebfonts.com/t/4a76c979ab2dfddd7d464494946e4661.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/4a76c979ab2dfddd7d464494946e4661.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/4a76c979ab2dfddd7d464494946e4661.woff") format("woff"), url("//db.onlinewebfonts.com/t/4a76c979ab2dfddd7d464494946e4661.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/4a76c979ab2dfddd7d464494946e4661.svg#ProximaNovaW01-Light") format("svg"); }
