@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Footer = () => (
     <React.Fragment>
-        <div className="w-full flex flex-row justify-center items-center">
+        <div className="w-full mt-28 flex flex-row justify-center items-center">
             <BorderedFooterItem>
                 <p className="font-didot">1350 Grant Street, #611</p>
                 <p className="font-didot">Denver, Colorado</p>

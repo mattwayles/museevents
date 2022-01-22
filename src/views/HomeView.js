@@ -9,7 +9,6 @@ const HomeView = () => {
     return(
         <React.Fragment>
             <Slideshow />
-            <p className="text-center mt-2 mb-32 font-didot font-bold text-xl">Muse Events Colorado - your perfect event awaits...</p>
             <Services />
             <Gallery />
             <Testimonials />
@@ -58,7 +57,7 @@ const Testimonials = () => (
 
 
 const HomepageSection = (props) => (
-    <div className="w-full flex flex-row justify-center items-start mb-32">
+    <div className="w-full flex flex-row justify-center items-start mt-28">
         <div className="w-3/4 flex flex-row justify-evenly items-start">
             {props.invert && <img className="w-1/2 h-[25vw] drop-shadow-imgInvert" src={props.imgSrc} alt="Muse Events"/>}
             <HomepageSectionText{...props} />

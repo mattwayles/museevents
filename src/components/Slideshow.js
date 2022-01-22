@@ -17,7 +17,7 @@ import slideshowImg15 from '../assets/img/homepage/slideshow/slideshow15.jpg';
 
 const images = [slideshowImg1, slideshowImg2, slideshowImg3, slideshowImg4, slideshowImg5, slideshowImg6, slideshowImg7,
     slideshowImg8, slideshowImg9, slideshowImg10, slideshowImg11, slideshowImg12, slideshowImg13, slideshowImg14, slideshowImg15];
-const delay = 2500;
+const delay = 3000;
 
 const Slideshow = () => {
     const [index, setIndex] = useState(0);
@@ -45,10 +45,10 @@ const Slideshow = () => {
     }, [index]);
 
     return (
-        <div className="overflow-hidden my-0 mx-auto">
+        <div className="overflow-hidden mx-auto mb-32">
             <div
-                className="whitespace-nowrap transition ease-in-out duration-1000"
-                style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+                className="whitespace-nowrap transition ease-in duration-500"
+                style={{ transform: `translateX(${-index * 100}%)` }}
             >
                 {images.map((image, index) => (
                     <img src={image}
