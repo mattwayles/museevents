@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/*
+  Theme tokens, derived from the live Wix site's CSS variables
+  (color_11..color_18) and font stacks.
+  Live fonts are proprietary Wix/Monotype faces; closest Google Fonts used:
+    - didot-w01-italic (headings)      -> Playfair Display (italic)
+    - brandon-grot-w01-light (body/nav) -> Montserrat (light, geometric sans)
+*/
+@theme {
+  --color-primary: #dea27a;   /* copper/peach (color_18) - buttons, links */
+  --color-primary-dark: #c4855d;
+  --color-accent: #ffd2b3;    /* soft peach (color_17) */
+  --color-ink: #414141;       /* main text (color_15) */
+  --color-muted: #a8a8a7;     /* secondary text (color_14) */
+  --color-line: #d4d4d2;      /* borders (color_13) */
+  --color-bg: #ffffff;        /* page background (color_11) */
+  --color-bg-soft: #f7efe9;   /* blush section background (color_16) */
+
+  --font-heading: "Playfair Display", "Didot", Georgia, serif;
+  --font-body: "Montserrat", "Brandon Grotesque", Helvetica, Arial, sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--color-ink);
+    background: var(--color-bg);
+    line-height: 1.7;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+}

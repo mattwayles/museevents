@@ -1,0 +1,93 @@
+---
+interface Item { label: string; href: string; external?: boolean; children?: { label: string; href: string }[] }
+
+const items: Item[] = [
+  { label: 'Home', href: '/' },
+  { label: 'About Muse', href: '/about-5' },
+  { label: 'Weddings', href: '/wedding-planning', children: [
+    { label: 'Wedding Coordination', href: '/wedding-coordination' },
+    { label: 'Full Wedding Planning', href: '/full-wedding-planning' },
+    { label: 'Partial Planning', href: '/partial-planning' },
+    { label: 'A La Carte', href: '/a-la-carte' },
+    { label: 'Design', href: '/weddingdesign' },
+  ] },
+  { label: 'Events', href: '/event-planning', children: [
+    { label: 'Events and Galas', href: '/events-and-galas' },
+  ] },
+  { label: 'Amazing Proposals', href: '/amazing-proposals', children: [
+    { label: 'About', href: '/about-1' },
+    { label: 'Proposal Packages', href: '/proposal-packages' },
+  ] },
+  { label: 'Instagram', href: '/instagram' },
+  { label: 'Gallery', href: '/photo-albums' },
+  { label: 'Contact', href: '/contactform' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Client Login', href: 'https://www.aisleplanner.com/signin/MuseEvents', external: true },
+];
+
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isCurrent = (href: string) => !href.startsWith('http') && href === path;
+const isActive = (it: Item) => isCurrent(it.href) || !!it.children?.some((c) => isCurrent(c.href));
+const linkBase = 'block px-3 py-2 text-xs uppercase tracking-widest transition-colors hover:text-primary-dark focus-visible:text-primary-dark';
+---
+<header class="bg-bg border-b border-line relative z-40">
+  <div class="mx-auto max-w-7xl px-6 flex items-center justify-between">
+    <!-- TODO: swap text wordmark for the scraped logo image once available -->
+    <a href="/" class="font-heading italic text-2xl py-4 text-ink">Muse Events</a>
+
+    <button id="nav-toggle" type="button" class="lg:hidden p-2" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+
+    <nav aria-label="Main" id="nav-menu" class="hidden lg:block absolute lg:static top-full left-0 right-0 bg-bg border-b lg:border-0 border-line">
+      <ul class="lg:flex lg:items-center px-6 lg:px-0 pb-4 lg:pb-0">
+        {items.map((it) => (
+          <li class="relative group">
+            {it.children ? (
+              <div class="flex items-center">
+                <a href={it.href} class:list={[linkBase, 'flex-1', isActive(it) && 'text-primary-dark font-normal']} aria-current={isCurrent(it.href) ? 'page' : undefined}>{it.label}</a>
+                <button type="button" class="sub-toggle p-2 lg:hidden" aria-expanded="false" aria-label={`Toggle ${it.label} submenu`}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <svg class="hidden lg:block -ml-1 mr-1" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+              <ul class="submenu hidden pl-4 lg:pl-0 lg:absolute lg:left-0 lg:top-full lg:min-w-56 lg:bg-bg lg:border lg:border-line lg:shadow-md lg:group-hover:block lg:group-focus-within:block">
+                {it.children.map((c) => (
+                  <li><a href={c.href} class:list={[linkBase, isCurrent(c.href) && 'text-primary-dark font-normal']} aria-current={isCurrent(c.href) ? 'page' : undefined}>{c.label}</a></li>
+                ))}
+              </ul>
+            ) : (
+              <a href={it.href} class:list={[linkBase, isActive(it) && 'text-primary-dark font-normal', it.external && 'lg:border lg:border-primary lg:ml-2']}
+                 aria-current={isCurrent(it.href) ? 'page' : undefined}
+                 target={it.external ? '_blank' : undefined} rel={it.external ? 'noopener noreferrer' : undefined}>{it.label}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    menu?.classList.toggle('hidden', open);
+  });
+  // Mobile submenu toggles
+  document.querySelectorAll<HTMLButtonElement>('.sub-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.closest('li')?.querySelector('.submenu')?.classList.toggle('hidden', open);
+    });
+  });
+  // Escape closes menus
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    (document.activeElement as HTMLElement | null)?.blur();
+    if (toggle?.getAttribute('aria-expanded') === 'true') toggle.click();
+  });
+</script>

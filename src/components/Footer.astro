@@ -1,0 +1,35 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="bg-bg-soft text-ink">
+  <div class="mx-auto max-w-6xl px-6 py-12 grid gap-8 md:grid-cols-3 text-sm">
+    <div>
+      <p class="font-heading italic text-2xl mb-3">Muse Events</p>
+      <address class="not-italic">1350 Grant St. #611<br />Denver, Colorado USA</address>
+    </div>
+    <div>
+      <p class="uppercase tracking-widest text-xs mb-3">Contact</p>
+      <ul class="space-y-1">
+        <li><a class="hover:text-primary-dark" href="mailto:info@museevents.com">info@museevents.com</a></li>
+        <li><a class="hover:text-primary-dark" href="mailto:Danielle@MuseEvents.com">Danielle@MuseEvents.com</a></li>
+        <li>Text/Call <a class="hover:text-primary-dark" href="tel:+17088260115">708.826.0115</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="uppercase tracking-widest text-xs mb-3">Follow</p>
+      <ul class="flex gap-4">
+        <li>
+          <a href="https://www.facebook.com/MuseEvents/" aria-label="Muse Events on Facebook" target="_blank" rel="noopener" class="hover:text-primary-dark">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8S15.6 3.5 14.3 3.500c-2.7 0-4.4 1.600-4.4 4.500v2.500H7.100v3.300h2.800V22h3.600Z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/muse.events" aria-label="Muse Events on Instagram" target="_blank" rel="noopener" class="hover:text-primary-dark">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.200" cy="6.800" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-line py-4 text-center text-xs text-muted">&copy; {year} Muse Events. All rights reserved.</div>
+</footer>

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+scripts/out/
+.netlify/
+.DS_Store
