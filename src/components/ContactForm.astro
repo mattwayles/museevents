@@ -13,9 +13,8 @@ const src = 'https://www.aisleplanner.com/inquiries/MuseEvents/48f0e693-bbe1-4fa
   </p>
 </div>
 <style>
-  /* Aisle Planner does not document a resize message, so use generous responsive heights:
-     the two-column form is ~560px tall on desktop; it stacks into a long single column on phones. */
-  iframe { min-height: 1250px; }
-  @media (min-width: 640px) { iframe { min-height: 900px; } }
-  @media (min-width: 900px) { iframe { min-height: 640px; } }
+  /* Aisle Planner has no resize message. Its form is ~880px tall when the frame is at least 800px wide
+     (two columns) and ~1530px when narrower (stacked). The page card gives the frame 800px+ from 960px up. */
+  iframe { height: 1550px; }
+  @media (min-width: 960px) { iframe { height: 900px; } }
 </style>

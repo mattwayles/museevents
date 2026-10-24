@@ -5,7 +5,7 @@ import Carousel from '../components/Carousel.astro';
 import Button from '../components/Button.astro';
 import SplitSection from '../components/SplitSection.astro';
 import { img } from '../lib/img';
-import carousel from '../../scripts/out/carousel.json';
+import carousel from '../data/carousel.json';
 
 const slides = carousel.map((c) => ({ src: img(c.localPath), alt: c.alt || c.title, caption: c.title }));
 ---
@@ -18,7 +18,7 @@ const slides = carousel.map((c) => ({ src: img(c.localPath), alt: c.alt || c.tit
       <Image src={img('pages/home/image-5110c6.png')} alt="Muse Events, Colorado" widths={[400, 600]} sizes="(min-width: 768px) 600px, 400px" loading="eager" class="max-w-none h-auto w-[400px] md:w-[600px] -ml-[100px] md:-ml-[149px] -mt-[85px] md:-mt-[128px]" />
     </div>
   </div>
-  <p class="font-heading italic text-sm px-4 py-1">Image by <a class="underline" href="https://plus.google.com/u/0/108739309701105981920?prsrc=4" target="_blank" rel="noopener">J. La Plante Photo</a></p>
+  <p class="font-heading italic text-sm px-4 py-1">Image by J. La Plante Photo</p>
 
   <SplitSection reverse>
     <Carousel slot="media" slides={slides} label="Muse Events photo carousel" />
