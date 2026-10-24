@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../../components/BlogCard.astro';
+import BlogSidebar from '../../../../components/BlogSidebar.astro';
+import { getSortedPosts, getArchive, monthKey, monthLabel } from '../../../../components/BlogUtils';
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts();
+  return getArchive(posts).map((a) => {
+    const [year, month] = a.key.split('/');
+    return { params: { year, month }, props: { key: a.key, posts: posts.filter((p) => monthKey(p.data.pubDate) === a.key) } };
+  });
+}
+const { key, posts } = Astro.props;
+---
+<BaseLayout title={`${monthLabel(key)} | Muse Events Blog`} description={`Muse Events blog posts from ${monthLabel(key)}.`}>
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <h1 class="text-4xl md:text-5xl text-center mb-2">{monthLabel(key)}</h1>
+    <p class="text-center mb-12"><a href="/blog" class="text-xs uppercase tracking-widest text-primary-dark">All posts</a></p>
+    <div class="grid lg:grid-cols-[1fr_16rem] gap-12">
+      <div class="space-y-8">{posts.map((post) => <BlogCard post={post} />)}</div>
+      <BlogSidebar current={key} />
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import { formatDate, postPath, type Post } from './BlogUtils';
+const { post } = Astro.props as { post: Post };
+const { title, pubDate, cover, description } = post.data;
+---
+<article class="group flex flex-col sm:flex-row border border-accent bg-white hover:shadow-md transition-shadow">
+  {cover && (
+    <a href={postPath(post)} class="sm:w-2/5 shrink-0 block overflow-hidden" tabindex="-1" aria-hidden="true">
+      <Image src={cover} alt="" width={600} height={450} class="w-full h-56 sm:h-full object-cover" loading="lazy" />
+    </a>
+  )}
+  <div class:list={['p-6 flex flex-col justify-center', !cover && 'border-l-4 border-primary']}>
+    <h2 class="text-2xl mb-2"><a href={postPath(post)} class="hover:text-primary">{title}</a></h2>
+    <time datetime={pubDate.toISOString()} class="text-xs uppercase tracking-widest text-muted mb-3">{formatDate(pubDate)}</time>
+    <p class="text-sm text-ink/80 line-clamp-4">{description}</p>
+    <a href={postPath(post)} class="mt-4 text-xs uppercase tracking-widest text-primary-dark">Read more</a>
+  </div>
+</article>

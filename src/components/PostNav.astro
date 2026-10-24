@@ -1,0 +1,9 @@
+---
+import { postPath, type Post } from './BlogUtils';
+const { newer, older } = Astro.props as { newer?: Post; older?: Post };
+---
+<nav class="mt-16 pt-8 border-t border-line grid grid-cols-2 gap-6 text-sm" aria-label="Post navigation">
+  <div>{older && (<a href={postPath(older)} rel="prev" class="hover:text-primary"><span class="block text-xs uppercase tracking-widest text-muted">&lsaquo; Older</span><span class="font-heading italic text-lg">{older.data.title}</span></a>)}</div>
+  <div class="text-right">{newer && (<a href={postPath(newer)} rel="next" class="hover:text-primary"><span class="block text-xs uppercase tracking-widest text-muted">Newer &rsaquo;</span><span class="font-heading italic text-lg">{newer.data.title}</span></a>)}</div>
+  <p class="col-span-2 text-center"><a href="/blog" class="text-xs uppercase tracking-widest text-primary-dark">Back to blog</a></p>
+</nav>

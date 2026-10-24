@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import BlogSidebar from '../../components/BlogSidebar.astro';
+import { getSortedPosts } from '../../components/BlogUtils';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return paginate(await getSortedPosts(), { pageSize: 9, params: {} });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const href = (n: number) => (n === 1 ? '/blog' : `/blog/${n}`);
+const nums = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+---
+<BaseLayout title={page.currentPage > 1 ? `Blog - Page ${page.currentPage} | Muse Events` : 'Blog | Muse Events'} description="Real weddings, planning tips and inspiration from Muse Events, Colorado wedding and event planners.">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <h1 class="text-4xl md:text-5xl text-center mb-12">Blog</h1>
+    <div class="grid lg:grid-cols-[1fr_16rem] gap-12">
+      <div>
+        <div class="space-y-8">
+          {page.data.map((post) => <BlogCard post={post} />)}
+        </div>
+        {page.lastPage > 1 && (
+          <nav class="flex flex-wrap justify-center items-center gap-4 mt-12 text-sm" aria-label="Pagination">
+            {page.url.prev !== undefined && <a href={href(page.currentPage - 1)} rel="prev" class="hover:text-primary">&lsaquo; Prev</a>}
+            {nums.map((n) => n === page.currentPage
+              ? <span class="text-primary" aria-current="page">{n}</span>
+              : <a href={href(n)} class="hover:text-primary">{n}</a>)}
+            {page.url.next !== undefined && <a href={href(page.currentPage + 1)} rel="next" class="hover:text-primary">Next &rsaquo;</a>}
+          </nav>
+        )}
+      </div>
+      <BlogSidebar />
+    </div>
+  </div>
+</BaseLayout>

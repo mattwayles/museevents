@@ -1,0 +1,49 @@
+---
+import { render } from 'astro:content';
+import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostNav from '../../components/PostNav.astro';
+import { getSortedPosts, formatDate, postPath, coverInBody } from '../../components/BlogUtils';
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts();
+  return posts.map((post, i) => ({
+    params: { path: postPath(post).replace(/^\/single-post\//, '') },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
+}
+const { post, newer, older } = Astro.props;
+const { Content } = await render(post);
+const { title, pubDate, cover, description } = post.data;
+const showCover = cover && !coverInBody(post);
+const og = cover ? (await getImage({ src: cover, width: 1200 })).src : undefined;
+---
+<BaseLayout title={`${title} | Muse Events`} description={description || title} ogImage={og}>
+  <article class="max-w-3xl mx-auto px-6 py-12">
+    <p class="mb-8"><a href="/blog" class="text-xs uppercase tracking-widest text-primary-dark">&lsaquo; Back to blog</a></p>
+    <h1 class="text-4xl md:text-5xl mb-3">{title}</h1>
+    <time datetime={pubDate.toISOString()} class="block text-xs uppercase tracking-widest text-muted mb-8">{formatDate(pubDate)}</time>
+    {showCover && <Image src={cover} alt="" width={1200} class="w-full h-auto mb-8" />}
+    <div class="post-body"><Content /></div>
+    <PostNav newer={newer} older={older} />
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .post-body { font-size: 1.0625rem; line-height: 1.85; overflow-wrap: break-word; }
+  .post-body > * + * { margin-top: 1.25rem; }
+  .post-body h2, .post-body h3, .post-body h4 { margin-top: 2.25rem; }
+  .post-body h2 { font-size: 1.75rem; }
+  .post-body h3 { font-size: 1.4rem; }
+  .post-body img { max-width: 100%; height: auto; margin: 2rem auto; display: block; }
+  .post-body a { color: var(--color-primary-dark); text-decoration: underline; text-underline-offset: 3px; }
+  .post-body ul, .post-body ol { padding-left: 1.5rem; }
+  .post-body ul { list-style: disc; }
+  .post-body ol { list-style: decimal; }
+  .post-body li + li { margin-top: .4rem; }
+  .post-body blockquote { border-left: 3px solid var(--color-accent); padding-left: 1.25rem; font-style: italic; }
+  .post-body hr { border-color: var(--color-line); margin: 2rem 0; }
+  .post-body iframe, .post-body video { max-width: 100%; }
+  .post-body strong { font-weight: 500; }
+</style>
