@@ -1,0 +1,58 @@
+---
+import { albumVariant } from './GalleryImages';
+interface Props { slug: string; images: { src: string; alt: string }[] }
+const { slug, images } = Astro.props;
+const items = await Promise.all(images.map(async (im) => {
+  const [thumb, full] = await Promise.all([albumVariant(slug, im.src, 600), albumVariant(slug, im.src, 2000)]);
+  return { alt: im.alt, thumb, full };
+}));
+---
+<div class="columns-2 md:columns-3 lg:columns-4 gap-3 [&>a]:mb-3" data-gallery>
+  {items.map((it, i) => (
+    <a href={it.full.src} data-index={i} data-alt={it.alt} class="block break-inside-avoid bg-bg-soft overflow-hidden cursor-zoom-in">
+      <img src={it.thumb.src} width={it.thumb.attributes.width} height={it.thumb.attributes.height}
+        alt={it.alt} loading="lazy" decoding="async" class="w-full h-auto block hover:opacity-90 transition-opacity" />
+    </a>
+  ))}
+</div>
+<div id="lb" class="fixed inset-0 z-[100] hidden bg-black/95 select-none" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img id="lb-img" alt="" class="absolute inset-0 m-auto max-w-full max-h-full object-contain" />
+  <button id="lb-close" aria-label="Close" class="absolute top-3 right-4 text-white text-4xl leading-none p-2">&times;</button>
+  <button id="lb-prev" aria-label="Previous" class="absolute left-2 top-1/2 -translate-y-1/2 text-white text-5xl p-3">&#8249;</button>
+  <button id="lb-next" aria-label="Next" class="absolute right-2 top-1/2 -translate-y-1/2 text-white text-5xl p-3">&#8250;</button>
+  <div id="lb-count" class="absolute bottom-3 left-0 right-0 text-center text-white/80 text-xs tracking-widest"></div>
+</div>
+<script>
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-gallery] a'));
+  const lb = document.getElementById('lb')!;
+  const img = document.getElementById('lb-img') as HTMLImageElement;
+  const count = document.getElementById('lb-count')!;
+  let cur = 0;
+  const show = (i: number) => {
+    cur = (i + links.length) % links.length;
+    img.src = links[cur].href;
+    img.alt = links[cur].dataset.alt || '';
+    count.textContent = `${cur + 1} / ${links.length}`;
+    const n = links[(cur + 1) % links.length].href;
+    new Image().src = n;
+  };
+  const open = (i: number) => { lb.classList.remove('hidden'); document.body.style.overflow = 'hidden'; show(i); };
+  const close = () => { lb.classList.add('hidden'); img.removeAttribute('src'); document.body.style.overflow = ''; };
+  links.forEach((a, i) => a.addEventListener('click', (e) => { e.preventDefault(); open(i); }));
+  document.getElementById('lb-close')!.onclick = close;
+  document.getElementById('lb-prev')!.onclick = () => show(cur - 1);
+  document.getElementById('lb-next')!.onclick = () => show(cur + 1);
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (lb.classList.contains('hidden')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(cur - 1);
+    else if (e.key === 'ArrowRight') show(cur + 1);
+  });
+  let x0 = 0;
+  lb.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+  });
+</script>

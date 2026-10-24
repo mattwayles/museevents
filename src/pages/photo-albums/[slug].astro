@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LightboxGallery from '../../components/LightboxGallery.astro';
+export async function getStaticPaths() {
+  return (await getCollection('albums')).map((a) => ({ params: { slug: a.data.slug }, props: { album: a.data } }));
+}
+const { album } = Astro.props;
+---
+<BaseLayout title={`${album.name} | Muse Events`} description={`${album.name}${album.subtitle ? ' at ' + album.subtitle : ''} - photo gallery by Muse Events.`}>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <a href="/photo-albums" class="text-xs uppercase tracking-widest text-muted hover:text-primary">&larr; All albums</a>
+    <h1 class="text-4xl text-center mt-6">{album.name}</h1>
+    {album.subtitle && <p class="text-center text-muted mt-2">{album.subtitle}</p>}
+    <div class="mt-10"><LightboxGallery slug={album.slug} images={album.images} /></div>
+  </section>
+</BaseLayout>

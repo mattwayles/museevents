@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AlbumTile from '../components/AlbumTile.astro';
+const albums = (await getCollection('albums')).map((a) => a.data).sort((a, b) => a.order - b.order);
+---
+<BaseLayout title="Gallery | Muse Events" description="Wedding and event galleries from Muse Events, Colorado wedding planners.">
+  <section class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="text-4xl text-center mb-12">Gallery</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+      {albums.map((a) => <AlbumTile slug={a.slug} name={a.name} subtitle={a.subtitle} cover={a.cover} />)}
+    </div>
+  </section>
+</BaseLayout>

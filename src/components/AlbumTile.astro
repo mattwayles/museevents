@@ -1,0 +1,15 @@
+---
+import { Image } from 'astro:assets';
+import { resolveAlbumImage } from './GalleryImages';
+interface Props { slug: string; name: string; subtitle?: string; cover: string }
+const { slug, name, subtitle, cover } = Astro.props;
+const src = resolveAlbumImage(slug, cover);
+---
+<a href={`/photo-albums/${slug}`} class="group block text-center">
+  <div class="aspect-square overflow-hidden bg-bg-soft">
+    <Image src={src} width={600} height={600} format="webp" quality={75} alt={name}
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+  </div>
+  <h2 class="font-heading italic text-xl mt-4 text-ink">{name}</h2>
+  {subtitle && <p class="text-xs text-muted mt-1">{subtitle}</p>}
+</a>
