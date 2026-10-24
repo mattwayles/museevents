@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ImageTextRow from "../components/ImageTextRow.astro";
+import { img } from "../lib/img";
+---
+<BaseLayout title="About | Amazing Proposals | Muse Events" description="Amazing Proposals, a small business in Denver, Colorado, helps men create the most memorable proposal. Complimentary consultation.">
+  <section class="px-6 pt-10 pb-4 text-center"><h1 class="text-5xl md:text-6xl">Who We Are</h1></section>
+  <section class="px-6 py-8">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <ImageTextRow image={img('pages/about-1/image-11acf4.jpg')} alt="Couple at a proposal">
+        <p class="mb-4">You Have found "The One", you have the ring of her dreams. Now how do you say those four words "Will You Marry Me"?</p>
+        <p class="mb-4">Let us help you create an amazing proposal. Years to come, when people ask, "How did you propose?" you will have a story to tell. One which shows your love.  It may be romantic, funny or over the top but it will be amazing!</p>
+        <h2 class="text-2xl mb-2">Complimentary Consultation</h2>
+        <p>This free service is a one on one consultation to learn about you and your intended so we are better able to create a tailored proposal.</p>
+      </ImageTextRow>
+      <ImageTextRow image={img('pages/about-1/image-f2b430.jpg')} alt="Proposal planning">
+        <p>Every proposal will be customized to a couple’s personality style. Different package options are provided for men to purchase what they need to plan depending on how much engagement is required by Amazing Proposals. Small details can easily be forgotten and Amazing Proposals will make sure nothing is missed. Not only does Amazing Proposals help with the creation of the proposal plan, but help with vendors will also be provided.</p>
+      </ImageTextRow>
+      <ImageTextRow image={img('pages/about-1/image-f735ae.jpg')} alt="Engagement ring">
+        <p>Amazing Proposals, a small business in Denver, Colorado was created to help men create the most memorable proposal. Services differ to fit vision, budget and details and provides a free consultation for men to conjure up a plan for their proposal. The proposal is the first of many steps in the process of a marriage and will constantly be asked about by friends and family of the couple. Amazing Proposals knows this can be overwhelming and is here to help men perfectly plan their proposal and make it special. Just give Amazing Proposals your ideas and the rest will be created from there.</p>
+      </ImageTextRow>
+    </div>
+  </section>
+</BaseLayout>

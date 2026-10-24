@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ImageTextRow from "../components/ImageTextRow.astro";
+import { img } from "../lib/img";
+---
+<BaseLayout title="Proposal Packages | Amazing Proposals | Muse Events" description="Basic, Classic and Custom proposal packages from Amazing Proposals. We can create a customized proposal with singular events.">
+  <section class="px-6 pt-10 pb-4 text-center">
+    <h1 class="text-4xl md:text-5xl mb-6">I Love You! Will You Marry Me?</h1>
+    <p class="mx-auto max-w-3xl font-heading italic text-xl">She's One-of-a-Kind and you want to give her a proposal unlike any other. We can create a customized proposal with singular events. We handle logistics to keep flash mobs out of your special moment...unless you want one.</p>
+  </section>
+  <section class="px-6 py-8">
+    <div class="mx-auto max-w-4xl space-y-12">
+      <ImageTextRow image={img('pages/proposal-packages/image-4adb07.jpg')} alt="Picnic proposal">
+        <h2 class="text-3xl mb-3">Basic Package</h2>
+        <p class="mb-3">A quiet reserved girl+ a traditional guy+ a small budget= a picinic at a place significant in your relationship down on a bended knee with Boys To Men playing, a bottle of champagne and her favorite chocolates each wrapped in promises of love.</p>
+        <p>Our basic package is mininmal and starts off with an in-depth consultation to figure what direction the proposal is going to go in.  We work with you to come up with a unique and one-of-a-kind proposal idea and then we bring them to life for you using our years of experience and connections.  You'll recieve personalized proposal ideas invented just for you!</p>
+      </ImageTextRow>
+      <ImageTextRow image={img('pages/proposal-packages/image-6ff546.jpg')} alt="Surprise party proposal">
+        <h2 class="text-3xl mb-3">Classic</h2>
+        <p class="mb-3">An outgoing girl+ funny guy+money no object= Surprise Party. An upmarket soiree with friends and family dressed up theme Flintstones. Throw in a boom shackalacka boom Flash mob. Best dressed wins a Tiffany diamond. (Hopefully she will agree to go back to your cave without hitting her over the head).</p>
+        <p>Our Classic Package includes an in-depth consultation that creates ideas for the proposal.  Then we prepare execute the idea for the men. We book the vendors (at our discounted rates) that will need to be present at the proposal.</p>
+      </ImageTextRow>
+      <div class="bg-bg-soft px-6 py-6 font-heading italic text-[17px] leading-relaxed">
+        <h2 class="text-3xl mb-3">Custom</h2>
+        <p>Are you looking for that tearful movie ending proposal? The ones where she and her friends use up a box of tisses. We specialize in creating those moments which last forever. This Ultimate package is the perfect romantic proposal. She is one of a kind and you want to give her a proposal unlike any other. Our team of proposal planners will create personalized marriage proposal ideas, book the necessary vendors (at our discounted rates), plan the details, generate a day-of timeline ans assist you in a stress free execution.  There will be a photographer and/or a videographer present.  We will create a speech and have a pre-planned manicure gift for her. This is our most popular package! Our coordinator wil be on site to make sure everything is going as perfectly planned. To make this proposal even better, we can add a family coordinated dinner or party to celebrate this milestone.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

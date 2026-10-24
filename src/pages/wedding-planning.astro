@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { img } from "../lib/img";
+import { fullPlanning } from "../lib/lists";
+const cards = [
+  { img: 'pages/wedding-planning/a-m-315-jpg-674b27.jpg', alt: 'Full wedding planning', title: 'Full Wedding Planning', href: '/full-wedding-planning', body: ['With this package, our team will help you with every single element of your wedding down to the smallest detail. Your itinerary will be completely managed and planned to perfection.'] },
+  { img: 'pages/wedding-planning/so-stunning-lisa-and-brian-congratulatio-d84e53.jpg', alt: 'Couple kissing at their ceremony', title: 'Partial Wedding Planning', href: '/partial-planning', body: ['Our partial wedding planning package incorporates both your ideas and ours. We will incorporate our help with your needs.'] },
+  { img: 'pages/wedding-planning/shea-carlo-wedding-alishalightphotograph-c804a6.jpg', alt: 'Outdoor wedding ceremony', title: 'Wedding Coordination', href: '/wedding-coordination', body: ['At Muse Events, our staff will help you coordinate your various wedding activities to make sure your special day goes smoothly.'] },
+  { img: 'pages/wedding-planning/tropical-wedding-cc0ef6.jpg', alt: 'Tropical Wedding', title: 'Intimate Weddings', body: ['Full Planning of every element of your small wedding down to the smallest detail.', 'Or Intimate Wedding Coordination for an intimate experience managed to perfection.'] },
+  { img: 'pages/wedding-planning/copy-of-0301-ryan-robin-fine-art-film-ph-e8c06b.jpg', alt: 'Destination wedding reception', title: 'Destination Weddings', body: ['Worldwide, From Fiji to Italy, Costa Rica or Hawaii!  we plan weddings all over the world, taking care of all of the planning from the ceremony details to transportation your guests, to give you your dream wedding!'] },
+  { img: 'pages/wedding-planning/lauren-and-chad-wedding-052619-280-j-aa791b.jpg', alt: 'Elopement ceremony', title: 'Elopements', body: ['Whether you want it to be just the two of you, or maybe just a handful of guests. No matter what size your wedding, there as tons of details so we help you  through the planning of your Colorado elopement.'] },
+  { img: 'pages/wedding-planning/shea-carlo-wedding-alishalightphotograph-bea611.jpg', alt: 'Wedding cake', title: 'A La Carte', href: '/a-la-carte', body: ['We offer a wide variety of extra services that can be added to any package. You can play around and mix and match a variety of these additional services to make your wedding more unique and personalized.'] },
+  { img: 'pages/wedding-planning/2018-03-02-0001-jpg-c1427c.jpg', alt: 'Wedding design collage', title: 'Design', href: '/weddingdesign', body: ['Our design team will help your dreams come to life through personalized plans made to meet all of your needs.'] },
+  { img: 'pages/wedding-planning/e-0401-jpg-1d4388.jpg', alt: 'Place setting with menu', title: 'Rental Assistance', body: ['Our team will coordinate all rental plans that range from wedding dresses to decor that will be used at the wedding. Renting plans will be coordinated between our team and your selected vendors.'] },
+];
+---
+<BaseLayout title="Colorado Wedding Planner | Denver Wedding Planner | Day Of Coordinator" description="Based out of Denver Colorado Muse Events offers Wedding planning, Partial Planning, Full Planning, Day of Coordination, All over the state or to any destination">
+  <h1 class="sr-only">Wedding Planning</h1>
+  <section class="px-6 py-10">
+    <div class="mx-auto max-w-4xl grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {cards.map((c) => (
+        <ServiceCard image={img(c.img)} alt={c.alt} title={c.title} href={c.href}>
+          {c.body.map((t) => <p>{t}</p>)}
+        </ServiceCard>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

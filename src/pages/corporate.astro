@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ImageTextRow from "../components/ImageTextRow.astro";
+import { img } from "../lib/img";
+const photos = [['conference-room-12316e','Conference Room'],['business-meeting-f84f9e','Business Meeting'],['glass-ceiling-eefa83','Glass Ceiling'],['data-on-a-touch-pad-c1646a','Data on a Touch Pad'],['business-brainstorm-bb9030','Business Brainstorm'],['skyscrapers-above-times-square-at-dawn-afbe22','Skyscrapers Above Times Square at Dawn']].map(([f,a]) => ({ src: img('pages/corporate/'+f+'.jpg'), alt: a }));
+---
+<BaseLayout title="Event Planner | Corporate Events | Muse Events" description="Our Event Planners are experts in organizing and managing a wide range of events, including conferences, seminars, meetings, or any other corporate event needs">
+  <section class="px-6 pt-10 pb-6 text-center">
+    <h1 class="text-5xl md:text-6xl mb-6">Corporate</h1>
+    <div class="mx-auto max-w-4xl bg-bg-soft px-6 md:px-10 py-8 font-heading italic text-[19px] leading-relaxed">
+      <p>With Muse Events, planning your corporate event is hassle free and easy. We will help structure and formulate a plan that ensures your event goes smoothly and flawlessly. Our corporate events are both engaging and exciting.</p>
+    </div>
+  </section>
+  <section class="px-6 py-4"><div class="mx-auto max-w-3xl"><ZoomGrid items={photos} /></div></section>
+  <section class="px-6 py-8">
+    <div class="mx-auto max-w-4xl grid gap-6 md:grid-cols-3">
+      <Image src={img('pages/corporate/image-c1f596.jpg')} alt="Business handshake" widths={[300, 450, 600]} sizes="(min-width: 768px) 280px, 100vw" loading="lazy" class="w-full h-auto" />
+      <Image src={img('pages/corporate/image-a71c1a.jpg')} alt="Modern office building" widths={[300, 450, 600]} sizes="(min-width: 768px) 280px, 100vw" loading="lazy" class="w-full h-auto" />
+      <Image src={img('pages/events-and-galas/networking-event-dadfb0.jpg')} alt="Business networking silhouettes" widths={[300, 450, 600]} sizes="(min-width: 768px) 280px, 100vw" loading="lazy" class="w-full h-auto" />
+    </div>
+  </section>
+</BaseLayout>

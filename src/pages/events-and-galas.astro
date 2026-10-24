@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ImageTextRow from "../components/ImageTextRow.astro";
+import { img } from "../lib/img";
+const photos = [['champagne-e37edb','Champagne'],['provence-style-dinner-set-fae2ec','Provence Style Dinner Set'],['networking-event-dadfb0','Networking Event'],['waiter-with-champagne-flutes-ebdd3d','Waiter with Champagne Flutes'],['set-table-fancy-night-event-6bc262','Set Table - Fancy Night Event'],['meetup-event-4167bc','Meetup Event']].map(([f,a]) => ({ src: img('pages/events-and-galas/'+f+'.jpg'), alt: a }));
+const include = ['Product Launch Parties','Non-Profit Benefits','Fundraisers','Grand Openings','Banquets','Fundraisers','Luncheons','And Other Special Events'];
+---
+<BaseLayout title="Special Event | Event Planner | Muse Events" description="Muse Events is highly passionate about creating, producing and orchestrating extraordinary events and galas for our clients.">
+  <section class="px-6 pt-10 pb-6 text-center"><h1 class="text-5xl md:text-6xl">Events and Galas</h1></section>
+  <section class="px-6 py-4"><div class="mx-auto max-w-3xl"><ZoomGrid items={photos} /></div></section>
+  <section class="px-6 py-8">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <ImageTextRow image={img('pages/events-and-galas/image-d385fb.jpg')} alt="Floating lanterns at night">
+        <p>Great parties do not happen by themselves – there is an art to entertaining. Design, filled with unique and unexpected details, creates an aura of adventure and discovery. Alluring design then must work in harmony with incredible food, service and music. The event is then masterfully orchestrated so that the energy is always building and the environment feels dynamic. Muse Events uses its keen ability to understand a client’s personality and vision, and infusing these elements into all facets of an event from the invitation’s greeting to the parting gift’s farewell.</p>
+      </ImageTextRow>
+      <ImageTextRow image={img('pages/events-and-galas/image-50a150.jpg')} alt="Catered food display">
+        <p>Our events reflect their clients’ sensibility so there is a strong identity and purpose behind them. We will work with your vision, sense of style, objectives and in further developing each aspect of the event. We will then design and implement an extraordinary environment tailor made for you. We love to customize events and offer anywhere from full to partial planning as well as day of coordination and a la carte options for your special event. Every event is different so we will work with you to create a customized event package to suit your planning needs. Click <a class="underline" href="/wedding-planning">here</a> to view more in depth descriptions of these options.</p>
+      </ImageTextRow>
+      <ImageTextRow image={img('pages/events-and-galas/image-f1c0b0.jpg')} alt="String lights at an evening event">
+        <p>Muse Events is highly passionate about creating, producing and orchestrating extraordinary events for our clients. Our team is committed to constantly challenging themselves and their industry vendors so they consistently produce phenomenal events for their clients and their guests.</p>
+        <p class="mt-2 not-italic font-body font-light text-[15px]">Our events include:</p>
+        <ul class="not-italic font-body font-light text-[15px] text-left">{include.map((t) => <li>• {t}</li>)}</ul>
+      </ImageTextRow>
+    </div>
+  </section>
+</BaseLayout>

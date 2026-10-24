@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ImageTextRow from "../components/ImageTextRow.astro";
+import { img } from "../lib/img";
+const why = ['Our team of experts know the right questions to ask you to effectively create a sentimental and personalized proposal for your significant other.','Assess our special rates from our trusted and award winning vendors and venues all around Colorado.','All stressful details are handled for you','All services and reservations are booked on your behalf.','Execution of contracts and payments for the event are managed','Instead of dealing with multiple vendors you have one point of contact to manage the entire event','Saves you from searching for hours for an "original idea" on the Internet, which you won\'t find.'];
+---
+<BaseLayout title="Amazing Proposals | Muse Events | United States" description="We help you create an amazing proposal. Years to come, when people ask, &quot;How did you propose?&quot; you will have an amazing story to tell. One which shows your love for your partner">
+  <section class="px-6 pt-10 pb-4 text-center">
+    <h1 class="text-5xl md:text-6xl mb-4">Amazing Proposals</h1>
+    <nav aria-label="Amazing Proposals" class="font-heading italic flex justify-center gap-10 mb-6"><a class="hover:text-primary-dark" href="/about-1">About</a><a class="hover:text-primary-dark" href="/proposal-packages">Proposal Packages</a></nav>
+    <p class="font-heading italic text-2xl md:text-3xl">~You can upgrade a diamond, you can never change a memory~</p>
+  </section>
+  <section class="px-6 py-6 text-center">
+    <Image src={img('pages/amazing-proposals/happy-newly-engaged-couple-73f902.jpg')} alt="Happy Newly Engaged Couple" widths={[400, 600, 800]} sizes="(min-width: 768px) 580px, 100vw" loading="eager" class="mx-auto w-full max-w-[580px] h-auto" />
+  </section>
+  <section class="px-6 py-6">
+    <div class="mx-auto max-w-4xl bg-bg-soft px-6 md:px-10 py-8 text-center font-heading italic text-2xl leading-snug">
+      <p>You have found "The One", you have the ring of her dreams, now how do you say those words "Will You Marry Me". "Popping the Question" is the first of many steps in the marriage process and can be considered one of the most important! An amazing game plan can go a long way and Amazing Proposals will be there to help every step of the way.</p>
+    </div>
+  </section>
+  <section class="px-6 py-6">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="text-3xl text-center mb-4">Why Hire Us?</h2>
+      <ul class="bg-bg-soft list-disc pl-10 pr-6 py-6 space-y-1 text-[17px]">{why.map((t) => <li>{t}</li>)}</ul>
+    </div>
+  </section>
+  <section class="px-6 py-6">
+    <div class="mx-auto max-w-3xl border-y border-accent py-6 text-center font-heading italic text-2xl leading-snug">
+      <p>We have expertise in creating ideas, setting up the process and preparing up to the moment everything will take place.  Muse Events, a business specializing in event coordination, is our parent company who we share creative coordinators and contacts with allowing us to have an advantage in the event planning industry.</p>
+    </div>
+  </section>
+  <section class="px-6 py-6 text-center">
+    <Image src={img('pages/amazing-proposals/engagement-ring-fede54.jpg')} alt="Engagement Ring" widths={[300, 400, 600]} sizes="(min-width: 768px) 360px, 100vw" loading="lazy" class="mx-auto w-full max-w-[360px] h-auto" />
+  </section>
+</BaseLayout>

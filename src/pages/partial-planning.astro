@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { img } from "../lib/img";
+import { fullPlanning } from "../lib/lists";
+const photos = [
+  ['wedding-couple-b9f1fb','Wedding Couple','Newlyweds at Sweatheart'],
+  ['denver-wedding-couple-decor-724706','Denver Wedding Couple Decor','Happy Couple Denver Wedding'],
+  ['vail-wedding-pinery-river-ranch-e4003c','Vail Wedding Pinery River Ranch','Piney River Ranch Vail Colorado Wedding'],
+  ['wedding-favors-919da0','Wedding Favors','Cute Favors for the Wedding Guests'],
+  ['table-decor-8b2e4c','Table decor','Wedding Decor & inspiration, blush pink flowers and gold accents'],
+  ['barn-wedding-5db2b9','Barn wedding','Chatfield Botanic Gardens Denver Wedding Newlyweds having the best time at the Reception'],
+].map(([f,a,c]) => ({ src: img('pages/partial-planning/'+f+'.jpg'), alt: a, caption: c }));
+const services = ['Unlimited Consultation Hours','Budget Development & Management','Custom Timelines, Schedules, & Checklists','Ceremony and Reception Site Search & Visits','Vendor Referrals & Selection','Contract Negotiation & Review','Unique Wedding Theme & Design','Floral Design & Décor Assistance','Invitation, Stationery, Favor, & Gift Selection','Vows, Readings, & Music Selection','Rental Assistance','Negotiation of guest room blocks','Development of floor plan and seating chart','Menu & Catering Assistance','Delivery of welcome baskets/bags to hotel','Final Vendor Confirmations','Detailed wedding day timeline'];
+const bigDay = ['Delivery of wedding gown & DIY to venue','Oversee Setup of Ceremony & Reception','Set up chairs, aisle runner, programs, etc. at ceremony','Setup and decoration of reception area','Setup of guest book, place cards, favors, etc. at reception','Assist bride and wedding party prior to ceremony','Distribution & Set up of all wedding flowers','Coordinate Rehearsal, Ceremony, & Reception','Coordinate Processional & Recessional','Supervise Vendors','Behind the scenes event management & troubleshooting','Coordination of entertainment and announcements','Manage Reception Timing','Distribution of gratuities to the necessary vendors','Oversee Reception Breakdown & Cleanup','Wedding Day Emergency Kit'];
+---
+<BaseLayout title="Colorado Wedding Planner | Partial Wedding Planning | Muse Events" description="For the bride who knows what she wants, but needs a little guidance putting all the ideas together, Muse Events offers customized partial wedding planning">
+  <section class="px-6 pt-10 pb-6 text-center">
+    <h1 class="text-5xl md:text-6xl mb-6">Partial Planning</h1>
+    <div class="mx-auto max-w-4xl bg-bg-soft px-6 md:px-10 py-8 font-heading italic text-[19px] leading-relaxed space-y-4">
+      <p>At Muse Events, we have created this custom package for the couple looking to play an active role in the planning process. If you enjoy planning your wedding but need a little professional help making decisions and planning the details whether you have begun the planning process, or not, this is the package for you.</p>
+      <p>Relax and leave the stress to us. With this package you will receive unlimited consultations via phone, email or in person, answers to questions and advice and a monthly timeline for you to follow. We provide vendor recommendations and bid estimates, arrange vendor appointments, and negotiate  contracts. We will arrange out-of-town guest accommodations and create your ceremony and reception site designs as well as handling all set up and delivery scheduling.</p>
+      <p>Starting at only $2400.</p>
+    </div>
+  </section>
+  <section class="px-6 py-4"><div class="mx-auto max-w-4xl"><ZoomGrid items={photos} /></div></section>
+  <section class="px-6 py-8">
+    <div class="mx-auto max-w-4xl">
+      <p class="font-heading italic text-[19px] mb-6">Your Planner Can help you with the following Wedding Planning Services based on what you need and want...</p>
+      <FeatureList items={services} />
+      <p class="font-heading italic text-[19px] mt-6">The list is endless. If you do not see something here that you need help with, just let us know!</p>
+      <h2 class="text-3xl mt-10 mb-6">On Your Big Day...</h2>
+      <FeatureList items={bigDay} />
+    </div>
+  </section>
+</BaseLayout>

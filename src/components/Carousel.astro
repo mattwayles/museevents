@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Slide { src: ImageMetadata; alt: string; caption?: string }
+interface Props { slides: Slide[]; label?: string }
+const { slides, label = 'Photo carousel' } = Astro.props;
+---
+<div class="carousel relative" role="region" aria-roledescription="carousel" aria-label={label} tabindex="0" data-interval="5000">
+  <div class="relative aspect-[7/5] overflow-hidden bg-bg-soft">
+    {slides.map((s, i) => (
+      <figure class="slide absolute inset-0 transition-opacity duration-700 motion-reduce:transition-none" style={i === 0 ? '' : 'opacity:0'} aria-hidden={i === 0 ? 'false' : 'true'} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`} data-active={i === 0 ? 'true' : 'false'}>
+        <Image src={s.src} alt={s.alt} width={800} height={571} widths={[400, 600, 800]} sizes="(min-width: 768px) 440px, 100vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} class="w-full h-full object-cover" />
+        {s.caption && (
+          <figcaption class="absolute inset-x-0 bottom-0 bg-black/45 text-white text-xs px-3 py-1.5 pr-14">{s.caption}</figcaption>
+        )}
+      </figure>
+    ))}
+    <button type="button" class="prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white w-9 h-9 text-xl leading-none" aria-label="Previous slide">‹</button>
+    <button type="button" class="next absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white w-9 h-9 text-xl leading-none" aria-label="Next slide">›</button>
+    <span class="counter absolute right-2 bottom-1.5 text-white text-xs" aria-live="off">1/{slides.length}</span>
+  </div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('.carousel').forEach((root) => {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('.slide'));
+    const counter = root.querySelector<HTMLElement>('.counter')!;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const interval = Number(root.dataset.interval) || 5000;
+    let cur = 0, timer: number | undefined, paused = false;
+    const go = (n: number) => {
+      cur = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => { s.style.opacity = i === cur ? '1' : '0'; s.setAttribute('aria-hidden', String(i !== cur)); });
+      counter.textContent = `${cur + 1}/${slides.length}`;
+    };
+    const stop = () => { if (timer) clearInterval(timer); timer = undefined; };
+    const start = () => { stop(); if (!reduce && !paused) timer = window.setInterval(() => go(cur + 1), interval); };
+    root.querySelector('.prev')!.addEventListener('click', () => { go(cur - 1); start(); });
+    root.querySelector('.next')!.addEventListener('click', () => { go(cur + 1); start(); });
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { go(cur - 1); start(); }
+      if (e.key === 'ArrowRight') { go(cur + 1); start(); }
+    });
+    const pause = () => { paused = true; stop(); };
+    const resume = () => { paused = false; start(); };
+    root.addEventListener('mouseenter', pause); root.addEventListener('mouseleave', resume);
+    root.addEventListener('focusin', pause); root.addEventListener('focusout', resume);
+    start();
+  });
+</script>

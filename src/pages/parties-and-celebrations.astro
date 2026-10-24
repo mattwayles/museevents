@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ImageTextRow from "../components/ImageTextRow.astro";
+import { img } from "../lib/img";
+const photos = [['sparklers-7f9f0a','Sparklers'],['outdoor-party-f9fbf4','Outdoor Party'],['birthday-party-table-9c7a0d','Birthday Party Table'],['party-in-santa-hats-4f434a','Party in Santa Hats'],['festive-party-bb8d67','Festive Party'],['dinner-party-f8f75f','Dinner Party']].map(([f,a]) => ({ src: img('pages/parties-and-celebrations/'+f+'.jpg'), alt: a }));
+const a = ['Engagement Parties','Formal Dinners','Baby Showers','Bar/Bat Mitzvahs','Sweet Sixteen','Quinceañera','Birthdays'];
+const b = ['Graduation Parties','Anniversary Celebrations','Holiday Parties','Pool Parties','Barbecues'];
+---
+<BaseLayout title="Parties and Celebrations | Muse Events" description="Muse Events can assemble a one of a kind celebration for any occasion, from engagement parties and showers to birthdays, graduations, and anniversaries.">
+  <section class="px-6 pt-10 pb-6 text-center"><h1 class="text-5xl md:text-6xl">Parties and Celebrations</h1></section>
+  <section class="px-6 py-4"><div class="mx-auto max-w-3xl"><ZoomGrid items={photos} /></div></section>
+  <section class="px-6 py-8">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <ImageTextRow image={img('pages/parties-and-celebrations/image-a49aaa.jpg')} alt="Friends toasting with beer">
+        <p class="mb-3">Muse Events can assemble a one of a kind celebration for any occasion from exquisite wedding proposals, engagement parties, baby and bridal showers, birthdays, graduations, anniversaries, and parties of any size.</p>
+        <p>Whether you want a wild night on the town or a private loft party, Muse Events can arrange a memorable event for you and your group including some of the city’s top clubs and lounges, entertainment, transportation, and hotel accommodations.</p>
+      </ImageTextRow>
+      <ImageTextRow image={img('pages/parties-and-celebrations/image-b43762.jpg')} alt="Friends relaxing by a pool">
+        <p>Professional and Experienced Staff service for your next special event.  We'll do whatever we can during the time we're there to see that you enjoy your event as much as your guests do! We not only take care of all your set up needs but also the clean up and organization at the end of the night. Please don't take chances with your big event, call the pros and enjoy complete peace of mind when planning your events. We offer an array of services that range from full coordination, to partial, to a la carte and day of. Click <a class="underline" href="/wedding-planning">here</a> to view those packages.</p>
+      </ImageTextRow>
+      <ImageTextRow image={img('pages/parties-and-celebrations/image-160302.jpg')} alt="Friends sharing a meal">
+        <p>Celebrations</p>
+        <div class="grid sm:grid-cols-2 gap-x-6 not-italic font-body font-light text-[15px] text-left">
+          <ul class="list-disc pl-6">{a.map((t) => <li>{t}</li>)}</ul>
+          <ul class="list-disc pl-6">{b.map((t) => <li>{t}</li>)}</ul>
+        </div>
+      </ImageTextRow>
+    </div>
+  </section>
+</BaseLayout>

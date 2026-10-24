@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { img } from "../lib/img";
+import { fullPlanning } from "../lib/lists";
+const items = ['Honey Moon Planning','Wedding Concierge Service','Full Wedding Weekend Planning','Destination Wedding Package - We love to travel!! If you are planning a destination wedding, our planners can assist you in making your dream wedding happen in your dream location!','Rehearsal Dinner Coordination Farewell Brunch, or Bridal Shower Coordination $400 each','Bridal Shower, Bridal Luncheon, Rehearsal Dinner or Bachelor/ Bachelorette Party Planning $400 each','Ceremony & Reception Venue Tours & Contract Review $400 For up to 6 Venues','Vendor Referrals & Contract Review - $300 Get 5 referrals per vendor category based on your wedding & contract review upon booking','Development of Wedding Planning Timeline - $150','Unique event theme, color & décor design - $250','Budget Development & Tracking - $150','Cookie car','We also do Cookie bars'];
+---
+<BaseLayout title="Colorado Wedding Planner | A la Carte Services | Muse Events" description="We are thrilled to assist with as much or as little as you wish. Choose from any of our services to build your own wedding planning package">
+  <section class="px-6 pt-10 pb-6 text-center">
+    <h1 class="text-5xl md:text-6xl mb-6">A La Carte</h1>
+    <p class="font-heading italic text-[19px]">The Following services can be added to any package,<br />purchased A La Carte or combined into a customized package.</p>
+  </section>
+  <section class="px-6 py-8"><div class="mx-auto max-w-4xl"><FeatureList items={items} /></div></section>
+</BaseLayout>

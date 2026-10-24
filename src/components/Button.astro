@@ -1,0 +1,8 @@
+---
+interface Props { href: string; class?: string; external?: boolean }
+const { href, class: cls, external } = Astro.props;
+---
+<a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}
+   class:list={['inline-block bg-white border border-accent text-ink font-heading italic text-[17px] px-8 py-3 transition-colors hover:bg-bg-soft focus-visible:bg-bg-soft', cls]}>
+  <slot />
+</a>

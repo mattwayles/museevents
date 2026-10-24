@@ -1,0 +1,8 @@
+---
+interface Props { name?: string; class?: string }
+const { name, class: cls } = Astro.props;
+---
+<figure class:list={[cls]}>
+  {name && <figcaption class="font-heading italic text-2xl mb-4">{name}</figcaption>}
+  <blockquote class="text-sm md:text-[15px] leading-relaxed text-ink"><slot /></blockquote>
+</figure>

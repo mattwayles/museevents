@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { img } from "../lib/img";
+import { fullPlanning } from "../lib/lists";
+const photos = [
+  ['pages/full-wedding-planning/wedding-beaver-creek-c40b3b.jpg','Wedding Beaver Creek','Beaver Creek Wedding with Very important wedding guests'],
+  ['pages/wedding-planning/a-m-315-jpg-674b27.jpg','Summer wedding processional','Summer Wedding in Breckenridge Colorado'],
+  ['pages/full-wedding-planning/sunset-photos-of-newly-weds-022129.jpg','Sunset Photos of Newly Weds','Newlyweds and the colorado sunset'],
+  ['pages/full-wedding-planning/saying-vows-ab24c9.jpg','Saying Vows','Saying their vows at Spruce Mountain Ranch Colorado'],
+  ['pages/full-wedding-planning/newlyweds-first-kiss-at-red-rocks-d0da1b.jpg','Newlyweds first kiss at red rocks','Newlyweds first kiss at Red Rocks Colorado'],
+  ['pages/full-wedding-planning/bridal-party-in-keystone-af3b8f.jpg','Bridal Party In Keystone','Wedding Party fun in the Rocky Mountains'],
+].map(([s,a,c]) => ({ src: img(s), alt: a, caption: c }));
+---
+<BaseLayout title="Full Wedding Planning | Muse Events | Colorado | Hawaii" description="We love wedding planning start to finish with Unlimited access to coordinator via phone or email. Complimentary consultation. Vendor recommendations.">
+  <section class="px-6 pt-10 pb-6 text-center">
+    <h1 class="text-5xl md:text-6xl mb-6">Full Wedding Planning</h1>
+    <div class="mx-auto max-w-4xl bg-bg-soft px-6 md:px-10 py-8 font-heading italic text-[19px] leading-relaxed space-y-4">
+      <p>At Muse Events our expert wedding planners coordinate the details, vendors and itinerary for your wedding.</p>
+      <p>With our services you will receive unlimited consultations via phone, email and in person, as well as answers to questions, advice and a monthly planning checklists. We will create a realistic budget, provide recommendations and bid estimates, arrange vendor appointments, negotiate  contracts, arrange out-of-town guest accommodations and create your ceremony and reception site designs as well as handling all set up and delivery scheduling. We develop a timeline and keep all vendors on schedule on your wedding day. Muse Events will be on-site for your ceremony and reception, tending to all of your wedding needs, and in short, we attend to all details and issues that may arise so you can enjoy your wedding. All we need from you, is to show up and say "I do".</p>
+    </div>
+  </section>
+  <section class="px-6 py-4"><div class="mx-auto max-w-4xl"><ZoomGrid items={photos} /></div></section>
+  <section class="px-6 py-8"><div class="mx-auto max-w-4xl"><FeatureList items={fullPlanning} /></div></section>
+</BaseLayout>

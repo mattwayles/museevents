@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { img } from "../lib/img";
+import { fullPlanning } from "../lib/lists";
+const imgs = [['bride-in-the-woods-aab4ff','Bride in the Woods'],['wedding-welcome-sign-a979d7','Wedding Welcome Sign'],['wedding-day-a91150','Wedding Day'],['wedding-cake-a4b047','Wedding Cake'],['grooms-bow-tie-and-corsage-179fef','Grooms Bow Tie and Corsage'],['decoration-16aa71','Decoration']].map(([f,a]) => ({ src: img('pages/wedding-coordination/'+f+'.jpg'), alt: a }));
+const items = ['Final Vendor Confirmations','Detailed wedding day timelines for vendors and staff','Coordinate Rehearsal','Pickup of all personal items for wedding day','Delivery of wedding gown to the ceremony site','Oversee Setup of Ceremony & Reception','Set up of chairs, aisle runner, candles, programs, etc. at the ceremony','Setup and decoration of reception area','Setup of guest book, place cards, engagement photos, menus, candles, favors, etc. at reception site','Assist bride and wedding party in dressing room prior to ceremony','Organization and distribution of all personal wedding flowers','Coordinate Ceremony','Coordinate Processional & Recessional','Transport decor & flowers from the ceremony to the reception','Meet, Greet, & Supervise Vendors','Behind the scenes event management and troubleshooting','Manage Timing of Wedding Highlights','Coordination of entertainment and all announcements of events','Manage and Coordinate Reception','Distribution of gratuities to the necessary vendors','Oversee Reception Breakdown & Cleanup','Wedding Day Emergency Kit'];
+---
+<BaseLayout title="Colorado Wedding Planner | Day of Wedding Coordinator | Muse Events" description="On the day of your wedding, we ensure your plans are carried out smoothly and stress free. We handle any problems that  arise and act as your wedding advocate">
+  <section class="px-6 pt-10 pb-6 text-center">
+    <h1 class="text-5xl md:text-6xl mb-6">Wedding Coordination</h1>
+    <div class="mx-auto max-w-4xl bg-bg-soft px-6 md:px-10 py-8 font-heading italic text-[19px] leading-relaxed space-y-4">
+      <p>Muse Events Wedding Day Coordination allows you to relax and enjoy your wedding day. This is the ideal service to give you the wedding day you envision without the stress. When you see your beloved waiting for you at the altar all you need to do is say “I do”, and we will take care of the rest. Although the service is typically called wedding day coordination, Muse Events will begin working with you a month prior to the wedding when your wedding director will meet with you to go over all of your planning details. From there we confirm your wedding vendors, create your timeline, and manage everything from A-Z on your wedding day, never limiting the number of hours we work on your wedding day.</p>
+      <p>Denver Metro Area  $1,500-$2,200<br />Mountain Weddings $1,900-$2,600<br />Intimate Weddings starting at $900<br />Destination Weddings - $1,800 Plus Travel</p>
+    </div>
+  </section>
+  <section class="px-6 py-6"><div class="mx-auto max-w-4xl"><ZoomGrid items={imgs} /></div></section>
+  <section class="px-6 py-8">
+    <div class="mx-auto max-w-4xl"><FeatureList items={items} /></div>
+    <div class="mx-auto max-w-4xl mt-10 text-center font-heading italic text-[19px] space-y-1">
+      <p>Typical Prices Range From $1,100-$1,800</p>
+      <p>Intimate Weddings with Less than 80 guests $800-$1,200</p>
+    </div>
+  </section>
+</BaseLayout>

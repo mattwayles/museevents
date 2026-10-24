@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ImageTextRow from "../components/ImageTextRow.astro";
+import { img } from "../lib/img";
+---
+<BaseLayout title="Testimonials | Muse Events" description="Rather than list a million reasons why you should choose Muse Events for your special day, let our many happy couples tell you.">
+  <section class="px-6 py-10 overflow-hidden">
+    <div class="mx-auto max-w-5xl grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-5xl md:text-6xl mb-6">Testimonials</h1>
+        <p class="font-semibold mb-6">Rather than list a million reasons why you should choose us for your special day, let our many happy Couples tell you...</p>
+        <p class="mb-4">"My wedding was completely perfect thanks to Danielle" - Stephanie</p>
+        <p>"Hiring Muse was one of the best decisions I made"<br />~ Amy</p>
+      </div>
+      <Image src={img('pages/testimonials/image-82e455.jpg')} alt="Bride and groom embracing" widths={[400, 600, 800]} sizes="(min-width: 768px) 480px, 100vw" loading="eager" class="w-full h-auto" />
+    </div>
+  </section>
+  <section class="px-6 py-10 overflow-hidden">
+    <div class="mx-auto max-w-5xl grid md:grid-cols-2 gap-8 items-center">
+      <Image src={img('pages/testimonials/5-jpg-5b204e.jpg')} alt="Bride and groom walking down the aisle" widths={[400, 600, 800]} sizes="(min-width: 768px) 480px, 100vw" loading="lazy" class="w-full h-auto" />
+      <div>
+        <h2 class="text-3xl mb-4">Carli</h2>
+        <p class="text-sm leading-relaxed">"My husband and I live in Arizona and planned a "destination wedding" in Denver, CO since that is where most of our relatives live. Having Danielle Ranney and Muse Events on our side for the partial wedding planning, and day of coordination was the best decision that I could have made. Danielle was an excellent planner, always ready to answer my questions, countless emails, and phone calls. I pretty much had a vision in mind for our wedding, and she let me run with what we wanted to do, while also providing suggestions, or being available for tastings, and meetings that I was unable to attend. On the wedding day, Danielle helped to put all the name tags on all of our little table number boxes that were filled with chocolate kisses. She also stayed at our reception the whole evening, making sure everything was running smoothly! Danielle Ranney was by far one of the BEST wedding planners, and I highly recommend Muse Events to anyone considering having someone valuable by their side on their big day!"</p>
+      </div>
+    </div>
+  </section>
+  <section class="px-6 py-10 overflow-hidden">
+    <div class="mx-auto max-w-5xl grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-3xl mb-4">Kelly</h2>
+        <p class="text-sm leading-relaxed">"My husband and I had a destination wedding in Breckenridge in August, 2018. I was a very particular, but lazy bride, and it was music to my ears when our venue recommended that we hire a day of coordinator. My husband found Muse Events/Danielle on The Knot, and we were impressed with their variety of services. We opted for the day-of coordination option because we wanted to be very involved with the fine details, but not stress at all during the big day. Weeks leading up to the wedding, Danielle had us complete a very detailed package that helped keep us on track. A few days before the wedding, we changed the getting ready venue for the bridesmaids. Danielle worked closely with my hair and makeup artists, photographer, videographer, and the transportation company to ensure everyone knew where to go and when to arrive. I didn't have to contact anyone or worry that it wasn't being handled. The day of the wedding was perfect, thanks to Danielle. I anticipated a few mishaps, but looking back, I can't think of one. She was organized, professional, extremely pleasant and up beat. I would definitely recommend Danielle to anyone getting married. Thanks for keeping me on track and sane, Danielle!"</p>
+      </div>
+      <Image src={img('pages/testimonials/mlphotofilm-tenmilestationwedding371-jpg-9a3ed3.jpg')} alt="Wedding party celebrating at Ten Mile Station" widths={[400, 600, 800]} sizes="(min-width: 768px) 480px, 100vw" loading="lazy" class="w-full h-auto" />
+    </div>
+  </section>
+  <section class="px-6 py-10 text-center">
+    <Image src={img('pages/testimonials/okamura-357-jpg-e93caf.jpg')} alt="Couple kissing" widths={[300, 480]} sizes="240px" loading="lazy" class="mx-auto w-[240px] h-auto mb-6" />
+    <p>"Hiring Muse was one of the best decisions I made"<br />~ Amy</p>
+  </section>
+</BaseLayout>

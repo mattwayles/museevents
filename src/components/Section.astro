@@ -1,0 +1,7 @@
+---
+interface Props { soft?: boolean; narrow?: boolean; class?: string }
+const { soft, narrow, class: cls } = Astro.props;
+---
+<section class:list={[soft && 'bg-bg-soft', 'px-6 py-12 md:py-16', cls]}>
+  <div class:list={['mx-auto', narrow ? 'max-w-3xl' : 'max-w-5xl']}><slot /></div>
+</section>

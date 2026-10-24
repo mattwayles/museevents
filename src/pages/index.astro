@@ -1,9 +1,46 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Carousel from '../components/Carousel.astro';
+import Button from '../components/Button.astro';
+import SplitSection from '../components/SplitSection.astro';
+import { img } from '../lib/img';
+import carousel from '../../scripts/out/carousel.json';
+
+const slides = carousel.map((c) => ({ src: img(c.localPath), alt: c.alt || c.title, caption: c.title }));
 ---
-<BaseLayout title="Muse Events | Denver Wedding & Event Planner" description="Muse Events is a Denver wedding and event planning company.">
-  <div class="mx-auto max-w-4xl px-6 py-24 text-center">
-    <h1 class="text-5xl">Muse Events</h1>
-    <p class="mt-4">Home page coming soon.</p>
+<BaseLayout
+  title="Colorado Wedding Planner | Event Planners | Muse Events"
+  description="Colorado Wedding Coordinator Muse Events is is an award winning wedding and event planning firm. Serving all of Colorado from Denver through out the rocky mountains. If you need a Denver Wedding Coordinator, Mountain Wedding Coordinator, or wedding planner, Let us be your Muse!">
+  <div class="relative">
+    <Image src={img('pages/home/image-9484ff.jpg')} alt="Bride and groom embracing on a Colorado mountain overlook at sunset" widths={[640, 1024, 1440, 1920]} sizes="100vw" loading="eager" fetchpriority="high" class="w-full h-[420px] md:h-[calc(100vw*0.53)] max-h-[768px] object-cover" />
+    <div class="absolute top-4 left-1/2 md:left-[62%] -translate-x-1/2 w-[200px] md:w-[300px] aspect-[1000/1125] overflow-hidden">
+      <Image src={img('pages/home/image-5110c6.png')} alt="Muse Events, Colorado" widths={[400, 600]} sizes="(min-width: 768px) 600px, 400px" loading="eager" class="max-w-none h-auto w-[400px] md:w-[600px] -ml-[100px] md:-ml-[149px] -mt-[85px] md:-mt-[128px]" />
+    </div>
   </div>
+  <p class="font-heading italic text-sm px-4 py-1">Image by <a class="underline" href="https://plus.google.com/u/0/108739309701105981920?prsrc=4" target="_blank" rel="noopener">J. La Plante Photo</a></p>
+
+  <SplitSection reverse>
+    <Carousel slot="media" slides={slides} label="Muse Events photo carousel" />
+    <h2 class="text-5xl md:text-6xl mb-6"><span class="text-7xl md:text-8xl">S</span><span class="text-2xl tracking-[0.15em]">ervices</span></h2>
+    <p class="mb-8 text-[15px]">Muse Events is one of Denver's  Top 10 Wedding Planners. Our weddings have been featured in Style Me Pretty, Perfect Wedding Guide and Whimsical Wonderland Weddings. We use personal touches to create a warm and intimate celebration for each of our couples. Our planners have the knowledge and experience to create  an amazing and memorable experience.</p>
+    <div class="flex flex-wrap gap-4 items-center">
+      <Button href="/wedding-planning">View Our Packages</Button>
+      <Button href="/wedding-planning">Wedding Planning</Button>
+      <Button href="/event-planning">Event Planning</Button>
+    </div>
+  </SplitSection>
+
+  <SplitSection image={img('pages/home/bride-and-groom-mounatin-wedding-portrait-9f7b2b.jpg')} alt="Bride and groom mountain wedding portrait">
+    <h2 class="text-5xl md:text-6xl mb-6"><span class="text-7xl md:text-8xl">G</span><span class="text-2xl tracking-[0.15em]">allery</span></h2>
+    <p class="mb-8 text-[15px]">Our portfolio illustrates the meticulous attention to detail that Muse Events puts into every single one of our events.</p>
+    <Button href="/photo-albums">View Photos</Button>
+  </SplitSection>
+
+  <SplitSection image={img('pages/home/bride-and-groom-mounatin-wedding-with-dog-c42fff.jpg')} alt="Bride and groom mountain wedding with their dog" reverse>
+    <h2 class="text-5xl md:text-6xl mb-6"><span class="text-7xl md:text-8xl">T</span><span class="text-2xl tracking-[0.15em]">estimonials</span></h2>
+    <blockquote class="text-[15px] mb-2">"...wonderful ideas and was able to make all of my visions come to life..."</blockquote>
+    <p class="font-heading italic mb-8">-Melissa</p>
+    <Button href="/testimonials">More Testimonials</Button>
+  </SplitSection>
 </BaseLayout>

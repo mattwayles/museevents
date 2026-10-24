@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { img } from "../lib/img";
+import { fullPlanning } from "../lib/lists";
+---
+<BaseLayout title="About Muse" description="Meet Danielle, head wedding planner at Muse Events, and learn how we turn every celebration into an unforgettable experience.">
+  <section class="px-6 pt-10">
+    <div class="mx-auto max-w-5xl grid md:grid-cols-2">
+      <div class="bg-ink text-white text-center italic font-heading px-8 py-12 flex flex-col justify-center">
+        <h2 class="text-2xl uppercase mb-6">WELCOME TO MUSE EVENTS</h2>
+        <p class="mb-2">Where every detail is meticulously crafted to perfection.</p>
+        <p>I'm Danielle, your trusted guide and passionate curator of unforgettable wedding experiences. As the Head wedding Planner here at Muse Events I have dedicated myself to helping couples bring their dream weddings to life. Whether you envision an intimate mountain elopement or a grand urban affair, I am committed to making your wedding day as magical and stress-free as possible. But beyond the logistics and planning, my ultimate goal is to create an experience that you and your guests will cherish for a lifetime. From the moment you say "I do" to the last dance of the evening, I am there to ensure that every moment is filled with joy, laughter, and unforgettable memories.</p>
+      </div>
+      <Image src={img('pages/about-5/image-18c570.jpg')} alt="Danielle helping a bride with her gown" widths={[400, 600, 800]} sizes="(min-width: 768px) 500px, 100vw" loading="eager" class="w-full h-full object-cover min-h-[320px]" />
+    </div>
+  </section>
+  <section class="px-6 py-12">
+    <div class="mx-auto max-w-3xl font-heading italic text-[17px] leading-relaxed space-y-5">
+      <h1 class="text-5xl">Who Are We?</h1>
+      <p>Welcome to Muse Events – where dreams become unforgettable memories.<br />At Muse Events, we believe that every celebration is a work of art, meticulously crafted to reflect the unique essence of each client's vision. With a passion for creativity, an eye for detail, and a commitment to excellence, we turn ordinary events into extraordinary experiences.</p>
+      <p>What sets Muse Events apart is our unwavering dedication to our clients. We believe in the power of collaboration, working closely with each client to understand their unique style, preferences, and aspirations. From the initial consultation to the final toast, we are there every step of the way, guiding, advising, and bringing their vision to life.</p>
+      <p>At Muse Events, we understand that no two events are alike, which is why we take a personalized approach to every project we undertake. We work closely with each client to understand their vision, preferences, and aspirations, ensuring that every detail is thoughtfully curated to reflect their unique style and personality.<br />But perhaps what truly sets us apart is our unwavering commitment to excellence. We believe in going above and beyond for our clients, delivering exceptional service, impeccable attention to detail, and unparalleled professionalism at every turn. Our goal is not just to meet expectations but to surpass them, leaving our clients and their guests with memories that will last a lifetime.</p>
+      <p>At Muse Events, we don't just plan events – we create experiences. From intimate gatherings to grand celebrations, we invite you to let your imagination soar and embark on a journey of inspiration, creativity, and endless possibilities. Because with Muse Events, the only limit is your imagination.</p>
+      <p>Let us be your Muse!</p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { img } from "../lib/img";
+import { fullPlanning } from "../lib/lists";
+const photos = [['full-wedding-planning/wedding-beaver-creek-c40b3b.jpg','Wedding Beaver Creek'],['weddingdesign/image-e180b2.jpg','Wedding design'],['weddingdesign/image-08e37a.jpg','Wedding design'],['weddingdesign/image-d69e59.jpg','Wedding design'],['weddingdesign/image-b1161b.jpg','Wedding design'],['weddingdesign/image-f34e9c.jpg','Wedding design']].map(([s,a]) => ({ src: img('pages/'+s), alt: a }));
+---
+<BaseLayout title="Colorado Wedding Designer | Wedding Design | Muse Events" description="Our Wedding Designers specialize in turning your dreams and ideas in a reality, threading your event with personality and sophistication.">
+  <section class="px-6 pt-10 pb-6 text-center">
+    <h1 class="text-5xl md:text-6xl mb-6">Design</h1>
+    <div class="mx-auto max-w-4xl bg-bg-soft px-6 md:px-10 py-8 font-heading italic text-[19px] leading-relaxed">
+      <p>If you've planned your wedding, but your kind of stuck when it comes to the "look" then this package is for you.  We will work with your venue to create a floorplan that utilizes the reception space to its full ability.  We will then create a full design plan that reflects your vision including lighting, linens and florals while maximizing your budget.</p>
+    </div>
+  </section>
+  <section class="px-6 py-4"><div class="mx-auto max-w-4xl"><ZoomGrid items={photos} /></div></section>
+  <section class="px-6 py-8"><div class="mx-auto max-w-4xl"><FeatureList items={fullPlanning} /></div></section>
+</BaseLayout>

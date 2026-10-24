@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import FeatureList from "../components/FeatureList.astro";
+import ZoomGrid from "../components/ZoomGrid.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { img } from "../lib/img";
+import { fullPlanning } from "../lib/lists";
+---
+<BaseLayout title="Event Planner | Event Services | Muse Events" description="Creating beautiful and unique events is what we do. We provide a multitude of services ranging from Day-of to Full Service Planning, and everything in between">
+  <h1 class="sr-only">Event Planning</h1>
+  <section class="px-6 py-10">
+    <div class="mx-auto max-w-4xl grid gap-6 md:grid-cols-3">
+      <ServiceCard image={img('pages/event-planning/image-3c2047.jpg')} alt="Craft beer glasses" title="Corporate" href="/corporate"><p>With Muse Events, planning your corporate event is hassle free and easy. We will help structure and formulate a plan that ensures your event goes smoothly and flawlessly. Our corporate events are both engaging and exciting.</p></ServiceCard>
+      <ServiceCard image={img('pages/event-planning/image-1eb319.jpg')} alt="Denver skyline" title="Events and Galas" href="/events-and-galas"><p>Planning your special event is important.You want everything to be perfect. At Muse Events, you’ll receive exceptional personal attention with planning, coordinating, and executing the details of your occasion. resulting in a memorable affair.</p></ServiceCard>
+      <ServiceCard image={img('pages/event-planning/image-dd0386.jpg')} alt="Elegant banquet tables" title="Parties and Celebrations" href="/parties-and-celebrations"><p>Whatever your event style, our special event planners personally work with you to ensure your occasion is unique and remarkable. From Birthdays to Engagement Parties, We strive to exceed your expectations and make your event extraordinary.</p></ServiceCard>
+    </div>
+  </section>
+</BaseLayout>
