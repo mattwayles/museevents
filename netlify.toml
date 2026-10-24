@@ -1,0 +1,386 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# 301 redirects for retired Wix URLs (nearest live page)
+
+[[redirects]]
+  from = "/jessica-parker"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-96"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-page-7"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-29"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/destination-weddings"
+  to = "/wedding-planning"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-22"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/steph-jj"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/shop"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-2-of-wedding-page-12"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-23"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-page-4"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/in-new-gallery"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gallery"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-page-8"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-page-2"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-page-3"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-30"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ashley-chris"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-gallery-page-2"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-9"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-98"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-26"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ang"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-page-6"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-gallery"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-95"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/angela"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-21"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-7-of-wedding-page-17"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-8"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/styled-shoot-2018"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-page-5"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-24"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-3-of-wedding-page-13"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-6-of-wedding-page-16"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-5-of-wedding-page-15"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-4-of-wedding-page-14"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-28"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-97"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-35"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-9-of-wedding-page-19"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/instagram"
+  to = "https://www.instagram.com/muse.events"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-parties-and-celebrations"
+  to = "/parties-and-celebrations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-8-of-wedding-page-18"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "/about-5"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-25"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/contactform"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-27"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-11"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-full-wedding-planning-1"
+  to = "/a-la-carte"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-99"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-10"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-1"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/shea-carlo"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-wedding-page-31"
+  to = "/photo-albums"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/elopements"
+  to = "/wedding-planning"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/product-page/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-feed.xml"
+  to = "/rss.xml"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/hashtags/*"
+  to = "/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/categories/*"
+  to = "/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/tags/*"
+  to = "/blog"
+  status = 301
+  force = true

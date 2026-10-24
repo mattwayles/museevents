@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+<BaseLayout title="Contact | Muse Events | Colorado United States" description="Contact our staff, everyone from Event Planners, Wedding Planners, Party Planners Month of Wedding Coordinators and Day of Wedding Coordinators to discuss our event services and your unique celebration plans here in Colorado or Destination Weddings and Events">
+  <section class="px-6 py-12">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="font-heading italic text-xl mb-2">Book a Consultation</p>
+      <h1 class="font-heading text-4xl font-bold mb-8">Muse Events</h1>
+      <hr class="max-w-xl mx-auto border-ink/20 mb-8" />
+      <p class="max-w-2xl mx-auto mb-10">Muse Events offers complimentary consultations for new clients. Our consultations are designed to get you started on the path to an amazing event. Budgets, decor and vendor recommendations are just the beginning. We would love to meet with you and hear about your perfect event. Let us be your Muse. Fill out the contact form to get in touch with us abut your event needs.</p>
+      <ContactForm />
+      <div class="font-heading italic mt-10 space-y-1">
+        <p>Other Contact Info:</p>
+        <p>Text Us : <a class="underline" href="sms:+17088260115">708.826.0115</a> (<a class="underline" href="tel:+17088260115">call</a>)</p>
+        <p>Email: <a class="underline" href="mailto:Danielle@MuseEvents.com">Danielle@MuseEvents.com</a></p>
+        <p><a class="underline" href="mailto:Info@museevents.com">Info@museevents.com</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+const src = 'https://www.aisleplanner.com/inquiries/MuseEvents/48f0e693-bbe1-4fac-ab49-02de3b20e65d';
+---
+<div class="contact-form">
+  <iframe id="aisle-planner-form" src={src} title="Muse Events consultation inquiry form" width="100%" scrolling="auto" class="w-full border-0 block"></iframe>
+  <noscript>
+    <p class="text-center mt-4">
+      <a class="underline" href={src} target="_blank" rel="noopener">Open the inquiry form in a new window</a>
+    </p>
+  </noscript>
+  <p class="text-center mt-4 text-sm">
+    Trouble viewing the form? <a class="underline" href={src} target="_blank" rel="noopener">Open it in a new window</a>.
+  </p>
+</div>
+<style>
+  /* Aisle Planner does not document a resize message, so use generous responsive heights:
+     the two-column form is ~560px tall on desktop; it stacks into a long single column on phones. */
+  iframe { min-height: 1250px; }
+  @media (min-width: 640px) { iframe { min-height: 900px; } }
+  @media (min-width: 900px) { iframe { min-height: 640px; } }
+</style>
